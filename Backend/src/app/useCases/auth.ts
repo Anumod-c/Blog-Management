@@ -47,6 +47,7 @@ export class AuthService {
       };
     }
   }
+  
   //verifying email and creating a new user
   async verifyEmail(email: string) {
     try {

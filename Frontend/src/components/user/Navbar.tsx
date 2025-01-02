@@ -43,24 +43,24 @@ const Navbar = () => {
 
           {/* Center Navigation Links */}
           <div className="hidden md:flex space-x-6">
-            <a
-              href="/profile"
+            <Link
+              to="/profile"
               className="text-sm font-medium hover:text-green-300"
             >
               Profile
-            </a>
-            <a
-              href="/home"
+            </Link>
+            <Link
+              to="/home"
               className="text-sm font-medium hover:text-green-300"
             >
               Home
-            </a>
-            <a
-              href="/add-blog"
+            </Link>
+            <Link
+              to="/add-blog"
               className="text-sm font-medium hover:text-green-300"
             >
               Add Blog
-            </a>
+            </Link>
           </div>
           {/* Profile Image */}
           <div
