@@ -121,14 +121,14 @@ const Login = () => {
                 </p>
               )}
             </div>
-            <div className="p-2 flex justify-end">
+            {/* <div className="p-2 flex justify-end">
               <span
                 onClick={() => setOpenForgotPassword(true)}
                 className="text-blue-500 cursor-pointer"
               >
                 Forgot Password?
               </span>
-            </div>
+            </div> */}
 
             <div className="flex justify-center items-center m-2">
               <button

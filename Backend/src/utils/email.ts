@@ -15,7 +15,7 @@ export const sendEmailVerification = async (to: string): Promise<void> => {
         from: config.EMAIL,
         to,
         subject: "Email Verification",
-        text:` click to verify : http://localhost:5173/email-verfication/${to}`,
+        text:` click to verify : https://blog-management-xi.vercel.app/email-verfication/${to}`,
         html: `
     <!DOCTYPE html>
     <html lang="en">
@@ -111,10 +111,10 @@ export const sendEmailVerification = async (to: string): Promise<void> => {
                 <p>Hello,</p>
                 <p>Thank you for registering with us! To complete your registration and activate your account, please click the button below to verify your email address.</p>
 
-                <a href="http://localhost:5173/email-verification/${to}" class="verify-button">Verify Email</a>
+                <a href="https://blog-management-xi.vercel.app/email-verification/${to}" class="verify-button">Verify Email</a>
 
                 <p>If the button above doesn't work, please copy and paste the following URL into your web browser:</p>
-                <p><a href="http://localhost:5173/email-verification/${to}">http://localhost:5173/email-verification/${to}</a></p>
+                <p><a href="https://blog-management-xi.vercel.app/email-verification/${to}">https://blog-management-xi.vercel.app/email-verification/${to}</a></p>
                 <p style='color:red'> Note: The link will expire in 30 minutes.</p>
                 <p>If you did not create an account, please ignore this email.</p>
             </div>

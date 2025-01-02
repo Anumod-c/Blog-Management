@@ -26,9 +26,9 @@ function Profile() {
         navigate(`/singleBlog/${blogId}`);
     };
 
-    const handleResetPassword = (): void => {
-        setShowModal(true);
-    };
+    // const handleResetPassword = (): void => {
+    //     setShowModal(true);
+    // };
     const handleEditProfile = (): void => {
         navigate('/edit-profile')
     }
@@ -175,12 +175,12 @@ function Profile() {
                         </div>
 
                         <div className="flex gap-4 mt-6">
-                            <button
+                            {/* <button
                                 onClick={handleResetPassword}
                                 className="bg-red-600 text-white p-3 rounded-md hover:bg-red-700 transition duration-200 w-full md:w-auto"
                             >
                                 Reset Password
-                            </button>
+                            </button> */}
                             <button
                                 onClick={handleEditProfile}
                                 className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-md  transition duration-200 w-full md:w-auto"
