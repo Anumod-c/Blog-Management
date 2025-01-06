@@ -30,6 +30,7 @@ const Login = () => {
     onSubmit: async(values) => {
       console.log("Login Submitted", values);
       const result = await axios.post(userEndpoints.login,values);
+      
       if(result.status==200 && result.data.success){
         console.log("Login result", result.data);
         dispatch(login(result.data.user))
