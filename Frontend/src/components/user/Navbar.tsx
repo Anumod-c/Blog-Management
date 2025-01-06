@@ -109,22 +109,22 @@ const Navbar = () => {
 
       {/* Mobile Dropdown Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-green-600">
+        <div className="md:hidden from-teal-600 to-emerald-600">
           <a
             href="/profile"
-            className="block px-4 py-2 text-sm hover:bg-green-700"
+            className="block px-4 py-2 text-sm"
           >
             Profile
           </a>
           <a
             href="/home"
-            className="block px-4 py-2 text-sm hover:bg-green-700"
+            className="block px-4 py-2 text-sm"
           >
             Home
           </a>
           <a
             href="/add-blog"
-            className="block px-4 py-2 text-sm hover:bg-green-700"
+            className="block px-4 py-2 text-sm"
           >
             Add Blog
           </a>

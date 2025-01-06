@@ -132,102 +132,99 @@ function Profile() {
     return (
         <>
             <Navbar />
-            <div className="min-h-screen bg-gray-100 p-6">
-                <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-lg p-6">
-                    <div className="flex space-x-8">
-                        {/* Left Side - Profile Image */}
-                        <div className=" flex justify-center items-center w-1/3 ">
-                            <img
-                                src={user?.avatar || `https://ui-avatars.com/api/?name=${user?.username}`}
-                                alt="Profile"
-                                className=" object-cover w-48 h-48 rounded-full mx-auto "
-                            />
-                        </div>
+            <div className="min-h-screen bg-gray-100 p-4 sm:p-6">
+    <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-lg p-4 sm:p-6">
+        {/* Profile Section */}
+        <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-8">
+            {/* Profile Image */}
+            <div className="flex justify-center md:justify-start items-center w-full md:w-1/3">
+                <img
+                    src={user?.avatar || `https://ui-avatars.com/api/?name=${user?.username}`}
+                    alt="Profile"
+                    className="object-cover w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full"
+                />
+            </div>
 
-                        {/* Profile Details */}
-                        <div className="w-2/3">
-                            <h1 className="text-3xl font-semibold text-gray-800 mb-4">{user?.username}</h1>
-                            <p className="text-gray-700 text-sm mb-4">Web Developer | React Enthusiast | Blogger</p>
+            {/* Profile Details */}
+            <div className="w-full md:w-2/3">
+                <h1 className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4">{user?.username}</h1>
+                <p className="text-gray-700 text-sm sm:text-base mb-4">
+                    Web Developer | React Enthusiast | Blogger
+                </p>
 
-                            {/* Bio Section */}
-                            <div className="mb-8">
-                                <h2 className="text-xl font-semibold text-gray-800 mb-4">About Me</h2>
-                                <p className="text-gray-700">
-                                    {user?.bio || 'No Bio available'}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                {/* About Me Section */}
+                <div className="mb-8">
+                    <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2 sm:mb-4">About Me</h2>
+                    <p className="text-gray-700">
+                        {user?.bio || 'No Bio available'}
+                    </p>
+                </div>
+            </div>
+        </div>
 
-                    {/* Contact Info and Reset Password Section */}
-                    <div className="flex  justify-between gap-6 bg-gray-50 p-6 shadow-md rounded-lg mt-8">
-                        <div className="flex flex-col">
-                            <h2 className="text-2xl font-semibold text-gray-800">Contact Info:</h2>
-                            <div className='flex gap-6'>
-                                <p className="text-gray-700 mt-2">
-                                    <strong>Email:</strong> {user?.email}
-                                </p>
-                                <p className="text-gray-700 mt-2">
-                                    <strong>Phone:</strong> {user?.phone}
-                                </p>
-                            </div>
+        {/* Contact Info and Reset Password Section */}
+        <div className="flex flex-col md:flex-row justify-between gap-4 bg-gray-50 p-4 sm:p-6 shadow-md rounded-lg mt-6">
+            <div className="flex flex-col">
+                <h2 className="text-xl sm:text-2xl font-semibold text-gray-800">Contact Info:</h2>
+                <div className="flex flex-wrap gap-4 sm:gap-6">
+                    <p className="text-gray-700 mt-2">
+                        <strong>Email:</strong> {user?.email}
+                    </p>
+                    <p className="text-gray-700 mt-2">
+                        <strong>Phone:</strong> {user?.phone}
+                    </p>
+                </div>
+            </div>
 
-                        </div>
+            <div className="flex flex-col sm:flex-row gap-4 mt-4 sm:mt-0">
+                <button
+                    onClick={handleEditProfile}
+                    className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-md transition duration-200 w-full sm:w-auto"
+                >
+                    Edit Profile
+                </button>
+            </div>
+        </div>
+    </div>
 
-                        <div className="flex gap-4 mt-6">
-                            {/* <button
-                                onClick={handleResetPassword}
-                                className="bg-red-600 text-white p-3 rounded-md hover:bg-red-700 transition duration-200 w-full md:w-auto"
+    {/* User's Blogs Section */}
+    <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-lg mt-6 p-4 sm:p-6">
+        <h2 className="text-lg sm:text-2xl font-semibold text-gray-800 mb-4 text-center">My Blogs</h2>
+        <div className="space-y-4">
+            {userBlogs?.length > 0 ? (
+                userBlogs.map((blog) => (
+                    <div key={blog._id} className="flex flex-col sm:flex-row justify-between items-center bg-gray-50 shadow-lg p-4 rounded-lg space-y-4 sm:space-y-0">
+                        <div className="flex-grow">
+                            <span
+                                onClick={() => handleBlogClick(blog._id)}
+                                className="text-base sm:text-lg text-gray-600 hover:underline hover:text-blue-600 cursor-pointer"
                             >
-                                Reset Password
-                            </button> */}
+                                {blog.title}
+                            </span>
+                        </div>
+                        <div className="flex space-x-4">
                             <button
-                                onClick={handleEditProfile}
-                                className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-md  transition duration-200 w-full md:w-auto"
+                                onClick={() => navigate(`/edit-blog`, { state: blog._id })}
+                                className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg transition duration-200"
                             >
-                                Edit Profile
+                                Edit
+                            </button>
+                            <button
+                                onClick={() => handleDeleteClick(blog._id)}
+                                className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition duration-200"
+                            >
+                                Delete
                             </button>
                         </div>
                     </div>
-                </div>
+                ))
+            ) : (
+                <p className="text-gray-600 text-center">You haven’t published any blogs yet.</p>
+            )}
+        </div>
+    </div>
+</div>
 
-                {/* User's Blogs Section */}
-                <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-lg mt-8 p-6">
-                    <h2 className="text-2xl font-semibold text-gray-800 mb-4 flex justify-center items-center">My Blogs</h2>
-                    <div className="space-y-4">
-                        {userBlogs?.length > 0 ? (
-                            userBlogs.map((blog) => (
-                                <div key={blog._id} className="flex justify-between items-center bg-white shadow-lg p-3 rounded-lg">
-                                    <div>                <span
-                                        onClick={() => handleBlogClick(blog._id)}
-                                        className="text-lg text-gray-600 hover:underline hover:text-blue-600 cursor-pointer"
-                                    >
-                                        {blog.title}
-                                    </span>
-                                    </div>
-                                    <div className="flex space-x-10 ">
-                                        <button
-                                            onClick={() => navigate(`/edit-blog`, { state: blog._id })}
-                                            className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg transition duration-200"
-                                        >
-                                            Edit
-                                        </button>
-                                        <button
-                                            onClick={() => handleDeleteClick(blog._id)} // Trigger delete modal
-                                            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition duration-200"
-                                        >
-                                            Delete
-                                        </button>
-                                    </div>
-                                </div>
-                            ))
-                        ) : (
-                            <p className="text-gray-600 text-center">You haven’t published any blogs yet.</p>
-                        )}
-
-                    </div>
-                </div>
-            </div>
 
             {/* Password Reset Modal */}
             {showModal && (
